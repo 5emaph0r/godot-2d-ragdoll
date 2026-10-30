@@ -1,0 +1,19 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+/build/
+
+# Rapier2D is a local demo dependency, not part of the addon.
+# Fetch the pinned build with tools/fetch_rapier.sh.
+/addons/godot-rapier2d/
+
+# Editor / OS noise
+~*
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local showcase captures
+/recordings/
+/.debug/

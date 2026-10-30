@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://ceva7k6ea4rmg"]
+
+[ext_resource type="PackedScene" uid="uid://nigky32u8pld" path="res://addons/ragdoll2d/scenes/ragdoll_2d.tscn" id="1_btlyn"]
+[ext_resource type="Script" uid="uid://iob4qm288w5r" path="res://demo/test_arena.gd" id="1_kti05"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i5shg"]
+
+[node name="TestArena" type="Node2D" unique_id=75118510]
+script = ExtResource("1_kti05")
+
+[node name="Label" type="Label" parent="." unique_id=1975830775]
+offset_left = 719.0
+offset_top = 5.0
+offset_right = 841.0
+offset_bottom = 106.0
+text = "move: left/right
+jump: up
+let loose: l
+stand up: s
+switch player: n
+reset: r"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1678578426]
+position = Vector2(116, 422)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_i5shg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=436627827]
+position = Vector2(77, 1)
+polygon = PackedVector2Array(-16, 3, 7, -8, 37, -1, 53, 8, 82, 8, 110, 9, 110, 39, 133, 39, 125, 56, 162, 49, 178, 23, 195, 23, 195, 5, 215, 5, 216, 75, -83, 72, -83, -38, -68, -39, -61, -17, -47, -26, -43, -21, -36, -21, -33, -25, -27, -25, -24, -11, -19, -11)
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D" unique_id=1073848380]
+position = Vector2(77, 1)
+points = PackedVector2Array(-16, 3, 7, -8, 37, -1, 53, 8, 82, 8, 110, 9, 110, 39, 133, 39, 125, 56, 162, 49, 178, 23, 195, 23, 195, 5, 215, 5, 216, 75, -83, 72, -83, -38, -68, -39, -61, -17, -47, -26, -43, -21, -36, -21, -33, -25, -27, -25, -24, -11, -19, -11, -16, 3)
+width = 2.0
+default_color = Color(0.27058825, 0.21568628, 1, 1)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1810777476]
+position = Vector2(395, 412)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_i5shg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2" unique_id=1429252792]
+position = Vector2(77, 1)
+polygon = PackedVector2Array(-20, 13, 138, 13, 259, 15, 328, 20, 362, 52, 412, 68, 467, 89, 550, 84, 584, 45, 607, -21, 609, -97, 648, -94, 662, 185, 306, 179, -64, 169, -62, 30)
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D2" unique_id=1367350799]
+position = Vector2(77, 1)
+points = PackedVector2Array(-20, 13, 138, 13, 259, 15, 328, 20, 362, 52, 412, 68, 467, 89, 550, 84, 584, 45, 607, -21, 609, -97, 648, -94, 662, 185, 306, 179, -64, 169, -62, 30, -20, 13)
+width = 2.0
+default_color = Color(0.27058825, 0.21568628, 1, 1)
+
+[node name="StaticBody2D3" type="AnimatableBody2D" parent="." unique_id=78385791]
+position = Vector2(319, -45)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_i5shg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3" unique_id=678208636]
+position = Vector2(77, 1)
+polygon = PackedVector2Array(-21, 104, -79, 94, -172, 59, -259, -3, -261, -63, -198, -128, -106, -175, 85, -170, 259, -141, 274, -95, 274, -27, 273, 32, 241, 99, 182, 131, 54, 142, -5, 113, -18, 106, -22, 113, 63, 166, 199, 144, 293, 84, 293, 4, 300, -134, 289, -176, 13, -214, -142, -216, -260, -149, -300, -59, -274, 68, -98, 138, -27, 129, -23, 110)
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D3" unique_id=448799396]
+position = Vector2(77, 1)
+points = PackedVector2Array(-21, 104, -79, 94, -172, 59, -259, -3, -261, -63, -198, -128, -106, -175, 85, -170, 259, -141, 274, -95, 274, -27, 273, 32, 241, 99, 182, 131, 54, 142, -5, 113, -18, 106, -22, 113, 63, 166, 199, 144, 293, 84, 293, 4, 300, -134, 289, -176, 13, -214, -142, -216, -260, -149, -300, -59, -274, 68, -98, 138, -27, 129, -23, 110)
+width = 2.0
+default_color = Color(0.27058825, 0.21568628, 1, 1)
+
+[node name="StaticBody2D4" type="AnimatableBody2D" parent="." unique_id=55215331]
+position = Vector2(744, 13.0000305)
+rotation = 0.7452556
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_i5shg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D4" unique_id=1071894762]
+position = Vector2(77, 1)
+polygon = PackedVector2Array(73, 11, 157, 11, 228, 8, 229, 41, 241, 85, 276, 101, 341, 98, 386, 103, 431, 106, 476, 62, 455, 35, 403, 46, 350, 57, 294, 48, 273, 29, 273, -13, 234, -54, 199, -42, 126, -49, 76, -63, 51, -83, 115, -133, 215, -139, 352, -84, 455, -46, 539, 12, 592, 103, 527, 185, 310, 185, 189, 135, 117, 80, 78, 49)
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D4" unique_id=472234428]
+position = Vector2(77, 1)
+points = PackedVector2Array(73, 11, 157, 11, 228, 8, 229, 41, 241, 85, 276, 101, 341, 98, 386, 103, 431, 106, 476, 62, 455, 35, 403, 46, 350, 57, 294, 48, 273, 29, 273, -13, 234, -54, 199, -42, 126, -49, 76, -63, 51, -83, 115, -133, 215, -139, 352, -84, 455, -46, 539, 12, 592, 103, 527, 185, 310, 185, 189, 135, 117, 80, 78, 49, 73, 11)
+width = 2.0
+default_color = Color(0.27058825, 0.21568628, 1, 1)
+
+[node name="Figure" parent="." unique_id=1606313652 instance=ExtResource("1_btlyn")]
+position = Vector2(265, 358)
+
+[node name="Figure2" parent="." unique_id=401392813 instance=ExtResource("1_btlyn")]
+position = Vector2(538, 358)
+
+[node name="Figure3" parent="." unique_id=1663842033 instance=ExtResource("1_btlyn")]
+position = Vector2(681, 206)
+
+[node name="Figure4" parent="." unique_id=599206363 instance=ExtResource("1_btlyn")]
+position = Vector2(796, 364)
+
+[node name="Figure5" parent="." unique_id=1902447180 instance=ExtResource("1_btlyn")]
+position = Vector2(551, -17)
+
+[node name="Figure6" parent="." unique_id=756234639 instance=ExtResource("1_btlyn")]
+position = Vector2(858, 55)

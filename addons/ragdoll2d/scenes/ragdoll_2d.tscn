@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://nigky32u8pld"]
+
+[ext_resource type="PackedScene" uid="uid://c3d2wt5kd3ljc" path="res://addons/ragdoll2d/scenes/limb.tscn" id="1_664hu"]
+[ext_resource type="Script" uid="uid://7g354x8vifl4" path="res://addons/ragdoll2d/src/ragdoll_2d.gd" id="1_afwfs"]
+[ext_resource type="Resource" uid="uid://bg5ow704ql7av" path="res://addons/ragdoll2d/resources/standard/standard_type.tres" id="2_ms0jt"]
+[ext_resource type="Script" uid="uid://b8abisd62i5pm" path="res://addons/ragdoll2d/src/impact_fx.gd" id="3_fx"]
+[ext_resource type="Resource" uid="uid://dk0kfwr8q8vit" path="res://addons/ragdoll2d/resources/standard/lower_arm.tres" id="4_e32cv"]
+[ext_resource type="AudioStream" uid="uid://bjg465hxksuyt" path="res://addons/ragdoll2d/sfx/impact.mp3" id="4_snd"]
+[ext_resource type="Resource" uid="uid://bwykdtydfm8el" path="res://addons/ragdoll2d/resources/standard/upper_arm.tres" id="5_7svf0"]
+[ext_resource type="AudioStream" uid="uid://bba3qsceoytu2" path="res://addons/ragdoll2d/sfx/hurt.mp3" id="5_voice"]
+[ext_resource type="Resource" uid="uid://5r70vur2o7jw" path="res://addons/ragdoll2d/resources/standard/lower_leg.tres" id="6_vtaq7"]
+[ext_resource type="Resource" uid="uid://b2g33dd5p8v1n" path="res://addons/ragdoll2d/resources/standard/upper_leg.tres" id="7_xmtbc"]
+[ext_resource type="Resource" uid="uid://bvryba3aqp7nj" path="res://addons/ragdoll2d/resources/standard/torso.tres" id="8_j223q"]
+[ext_resource type="Resource" uid="uid://cnagw1hosvnga" path="res://addons/ragdoll2d/resources/standard/head.tres" id="9_1n8mi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gviki"]
+resource_local_to_scene = true
+radius = 12.0
+height = 82.0
+
+[node name="Ragdoll2D" type="Node2D" unique_id=1902447180]
+script = ExtResource("1_afwfs")
+figure_type = ExtResource("2_ms0jt")
+
+[node name="Parts" type="Node2D" parent="." unique_id=462603398]
+
+[node name="LowerArmR" parent="Parts" unique_id=333137158 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(0, 18)
+mass = 0.5
+spec = ExtResource("4_e32cv")
+attached_to = NodePath("../UpperArmR")
+
+[node name="UpperArmR" parent="Parts" unique_id=1940584284 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = -2
+spec = ExtResource("5_7svf0")
+attached_to = NodePath("../Torso")
+
+[node name="LowerLegR" parent="Parts" unique_id=1468678828 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(0, 42)
+mass = 0.5
+spec = ExtResource("6_vtaq7")
+attached_to = NodePath("../UpperLegR")
+has_ground_ray = true
+
+[node name="UpperLegR" parent="Parts" unique_id=1442365058 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = -2
+position = Vector2(0, 24)
+spec = ExtResource("7_xmtbc")
+attached_to = NodePath("../Torso")
+
+[node name="Torso" parent="Parts" unique_id=6144293 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+mass = 4.0
+spec = ExtResource("8_j223q")
+
+[node name="Head" parent="Parts" unique_id=1948631500 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = 1
+mass = 0.5
+spec = ExtResource("9_1n8mi")
+attached_to = NodePath("../Torso")
+join_bottom = true
+
+[node name="UpperLegL" parent="Parts" unique_id=1395439018 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(0, 24)
+spec = ExtResource("7_xmtbc")
+attached_to = NodePath("../Torso")
+
+[node name="LowerLegL" parent="Parts" unique_id=181814121 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(0, 42)
+mass = 0.5
+spec = ExtResource("6_vtaq7")
+attached_to = NodePath("../UpperLegL")
+has_ground_ray = true
+
+[node name="UpperArmL" parent="Parts" unique_id=1271868453 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = 2
+spec = ExtResource("5_7svf0")
+attached_to = NodePath("../Torso")
+
+[node name="LowerArmL" parent="Parts" unique_id=848836285 instance=ExtResource("1_664hu")]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(0, 18)
+mass = 0.5
+spec = ExtResource("4_e32cv")
+attached_to = NodePath("../UpperArmL")
+
+[node name="Controller" type="Node2D" parent="." unique_id=429960512]
+
+[node name="Control" type="CharacterBody2D" parent="Controller" unique_id=1297335765]
+unique_name_in_owner = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Controller/Control" unique_id=438128121]
+unique_name_in_owner = true
+position = Vector2(0, 22)
+shape = SubResource("CapsuleShape2D_gviki")
+
+[node name="HeadJoint" type="DampedSpringJoint2D" parent="Controller" unique_id=1243598222]
+unique_name_in_owner = true
+position = Vector2(0, -43)
+node_a = NodePath("../Control")
+node_b = NodePath("../../Parts/Torso")
+length = 43.0
+rest_length = 2.0
+stiffness = 4000.0
+damping = 40.0
+
+[node name="TorsoJoint" type="DampedSpringJoint2D" parent="Controller" unique_id=1982869715]
+unique_name_in_owner = true
+position = Vector2(0, 66)
+rotation = 3.1415927
+node_a = NodePath("../Control")
+node_b = NodePath("../../Parts/Torso")
+length = 39.0
+rest_length = 2.0
+stiffness = 4000.0
+damping = 40.0
+
+[node name="ImpactFx" type="Node2D" parent="." unique_id=1253871136]
+script = ExtResource("3_fx")
+sound = ExtResource("4_snd")
+voice = ExtResource("5_voice")

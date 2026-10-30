@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://27k7p3og7j7x"]
+
+[ext_resource type="PackedScene" uid="uid://nigky32u8pld" path="res://addons/ragdoll2d/scenes/ragdoll_2d.tscn" id="1_figure"]
+[ext_resource type="Script" uid="uid://c1quc5eu1566a" path="res://demo/showcase.gd" id="2_showcase"]
+
+[node name="Showcase" type="Node2D" unique_id=1385950679]
+script = ExtResource("2_showcase")
+
+[node name="Figure" parent="." unique_id=1668303836 instance=ExtResource("1_figure")]
+position = Vector2(60, -64)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=707338939]
+position = Vector2(86, -130)
+zoom = Vector2(2.15, 2.15)

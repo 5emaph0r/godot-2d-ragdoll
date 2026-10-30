@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: "4.7.2"
+
+jobs:
+  smoke-test:
+    name: Smoke test
+    # Pin the image instead of ubuntu-latest: GitHub rotates that label to a new
+    # Ubuntu release and prints a migration warning for every workflow.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Cache Godot
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/godot-ragdoll/godot
+          key: godot-${{ env.GODOT_VERSION }}-linux-x86_64
+
+      - name: Fetch pinned Rapier2D
+        shell: bash
+        run: bash tools/fetch_rapier.sh
+
+      - name: Install Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          version="${GODOT_VERSION}"
+          cache="$HOME/.cache/godot-ragdoll/godot"
+          binary="$cache/Godot_v${version}-stable_linux.x86_64"
+
+          if [[ ! -x "$binary" ]]; then
+            mkdir -p "$cache"
+            archive="$RUNNER_TEMP/godot-${version}.zip"
+            curl -fsSL --retry 3 --retry-delay 2 \
+              -o "$archive" \
+              "https://github.com/godotengine/godot/releases/download/${version}-stable/Godot_v${version}-stable_linux.x86_64.zip"
+            unzip -q "$archive" -d "$cache"
+            chmod +x "$binary"
+          fi
+
+          # The release ZIP contains only the versioned binary; expose it as
+          # `godot` for the rest of the workflow.
+          ln -sf "$binary" "$cache/godot"
+          echo "$cache" >> "$GITHUB_PATH"
+          "$binary" --version
+
+      - name: Import project
+        run: godot --headless --import --quit-after 60
+
+      - name: Run smoke test
+        run: godot --headless res://tests/smoke_test.tscn
+
+      - name: Run addon isolation test
+        run: bash tools/test_addon_isolated.sh

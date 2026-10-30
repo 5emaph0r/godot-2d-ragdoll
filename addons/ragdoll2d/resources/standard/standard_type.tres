@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Ragdoll2DFigureType" format=3 uid="uid://bg5ow704ql7av"]
+
+[ext_resource type="Script" uid="uid://b3cpp7p4q6piy" path="res://addons/ragdoll2d/src/figure_type.gd" id="1_mm62t"]
+[ext_resource type="Resource" uid="uid://cnagw1hosvnga" path="res://addons/ragdoll2d/resources/standard/head.tres" id="1_xie5w"]
+[ext_resource type="Resource" uid="uid://dk0kfwr8q8vit" path="res://addons/ragdoll2d/resources/standard/lower_arm.tres" id="2_jb25m"]
+[ext_resource type="Resource" uid="uid://5r70vur2o7jw" path="res://addons/ragdoll2d/resources/standard/lower_leg.tres" id="3_57kva"]
+[ext_resource type="Resource" uid="uid://bvryba3aqp7nj" path="res://addons/ragdoll2d/resources/standard/torso.tres" id="5_7dppg"]
+[ext_resource type="Resource" uid="uid://bwykdtydfm8el" path="res://addons/ragdoll2d/resources/standard/upper_arm.tres" id="6_4uf5g"]
+[ext_resource type="Resource" uid="uid://b2g33dd5p8v1n" path="res://addons/ragdoll2d/resources/standard/upper_leg.tres" id="7_c2j04"]
+
+[resource]
+script = ExtResource("1_mm62t")
+walk_speed = 100.0
+jump_speed = 400.0
+crawl_muscle = 1.0
+head_spec = ExtResource("1_xie5w")
+torso_spec = ExtResource("5_7dppg")
+upper_arm_spec = ExtResource("6_4uf5g")
+lower_arm_spec = ExtResource("2_jb25m")
+upper_leg_spec = ExtResource("7_c2j04")
+lower_leg_spec = ExtResource("3_57kva")
+metadata/_custom_type_script = "uid://b3cpp7p4q6piy"

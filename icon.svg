@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>Ragdoll 2D</title>
+  <desc>A limp stick figure with ball joints and crossed-out eyes, tumbling through the air.</desc>
+
+  <defs>
+    <linearGradient id="ragdoll-bg" x1="20" y1="8" x2="108" y2="122" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2c3752"/>
+      <stop offset="1" stop-color="#151a26"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="3" y="3" width="122" height="122" rx="27" fill="url(#ragdoll-bg)"/>
+  <rect x="3.75" y="3.75" width="120.5" height="120.5" rx="26.25" fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width="1.5"/>
+
+  <g transform="rotate(40 64 64) translate(1 3)">
+    <g fill="none" stroke="#f3f6fc" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M56 36C55 49 60 60 70 69"/>
+      <path d="M56 44Q38 54 31 73"/>
+      <path d="M60 44Q79 41 89 27"/>
+      <path d="M70 69Q53 80 47 100"/>
+      <path d="M70 69Q87 82 97 69"/>
+    </g>
+
+    <g transform="rotate(-30 50 27)">
+      <circle cx="50" cy="27" r="10" fill="#5fb2ff"/>
+      <g fill="none" stroke="#182030" stroke-width="1.7" stroke-linecap="round">
+        <path d="M43.8 24.7l4.4 4.4M48.2 24.7l-4.4 4.4"/>
+        <path d="M51.8 24.7l4.4 4.4M56.2 24.7l-4.4 4.4"/>
+      </g>
+    </g>
+
+    <g fill="#5fb2ff">
+      <circle cx="57.5" cy="45" r="3.8"/>
+      <circle cx="40.8" cy="56.3" r="3.8"/>
+      <circle cx="76.8" cy="38.3" r="3.8"/>
+      <circle cx="70" cy="69" r="3.8"/>
+      <circle cx="55.8" cy="82.3" r="3.8"/>
+      <circle cx="85.3" cy="75.5" r="3.8"/>
+    </g>
+  </g>
+</svg>

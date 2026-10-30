@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Ragdoll2DLimbSpec" format=3 uid="uid://dk0kfwr8q8vit"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://ctaffy87r46tw" path="res://addons/ragdoll2d/resources/standard/physics_material.tres" id="1_jvmei"]
+[ext_resource type="Script" uid="uid://bwkyt4miob0dw" path="res://addons/ragdoll2d/src/limb_spec.gd" id="2_5wfha"]
+
+[resource]
+script = ExtResource("2_5wfha")
+length = 16.0
+width = 5.0
+mass = 0.5
+attach_fraction = 1.0
+physics_material = ExtResource("1_jvmei")
+muscle_rate = 45.0
+joint_rate = 52.0
+limit_upper = 2.44
+impact_threshold = 1600.0
+metadata/_custom_type_script = "uid://bwkyt4miob0dw"

@@ -1,0 +1,9 @@
+# Normalize EOL for all files that Git considers text files.
+* text=auto eol=lf
+
+# Godot Asset Library downloads a snapshot of the repository at the submitted
+# commit. Ship only the addon in that archive; the demo, tests and CI files stay
+# in the repository. This is the pattern recommended by the Godot docs.
+/** export-ignore
+/addons !export-ignore
+/addons/** !export-ignore
